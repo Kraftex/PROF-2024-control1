@@ -1,0 +1,3 @@
+# For gradle unnecesary directories
+build/
+.gradle/

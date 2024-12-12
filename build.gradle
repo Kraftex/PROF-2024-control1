@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+def jUnitPlatformVersion = '5.10.0'
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit for testing.
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitPlatformVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitPlatformVersion}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
