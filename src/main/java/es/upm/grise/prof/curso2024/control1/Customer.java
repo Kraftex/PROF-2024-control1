@@ -2,6 +2,8 @@ package es.upm.grise.prof.curso2024.control1;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collection;
+
 
 public class Customer {
 	
@@ -34,5 +36,8 @@ public class Customer {
 		return selectedAccount;
 		
 	}
-	
+
+    public void setAccounts ( final Collection<Account> accounts ) {
+        this.accounts.addAll(accounts);
+    }	
 }

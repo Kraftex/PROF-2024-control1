@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+def jUnitPlatformVersion = '5.10.0'
+def mockitoVersion = '5.7.0'
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // Use JUnit for testing.
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitPlatformVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitPlatformVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+}
+
+// Added specific version for Java to use mock with no problems
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+    
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacoco {
+    toolVersion = "0.8.12"
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 1.00
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification

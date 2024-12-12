@@ -12,6 +12,11 @@ public class Account {
 	Account() {
 		transactions = new ArrayList<Transaction>();
 	}
+    Account ( final String accNum, final float initAmount ) {
+        this();
+        accountNumber = accNum;
+        initialAmount = initAmount;
+    }
 	
 	public float getCurrentBalance() {
 		
@@ -27,5 +32,4 @@ public class Account {
 	public String getAccountNumber() {
 		return accountNumber;
 	}
-
 }
