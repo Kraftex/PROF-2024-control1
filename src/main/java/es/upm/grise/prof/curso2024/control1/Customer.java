@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collection;
 
+
 public class Customer {
 	
 	private List<Account> accounts;
@@ -38,6 +39,5 @@ public class Customer {
 
     public void setAccounts ( final Collection<Account> accounts ) {
         this.accounts.addAll(accounts);
-    }
-	
+    }	
 }

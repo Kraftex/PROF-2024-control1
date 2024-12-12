@@ -12,7 +12,6 @@ public class Account {
 	Account() {
 		transactions = new ArrayList<Transaction>();
 	}
-
     Account ( final String accNum, final float initAmount ) {
         this();
         accountNumber = accNum;
