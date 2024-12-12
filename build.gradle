@@ -3,6 +3,7 @@ plugins {
 }
 
 def jUnitPlatformVersion = '5.10.0'
+def mockitoVersion = '5.7.0'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -13,7 +14,16 @@ dependencies {
     // Use JUnit for testing.
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitPlatformVersion}"
     testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitPlatformVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
 }
+
+// Added specific version for Java to use mock with no problems
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
 
 tasks.named('test') {
     useJUnitPlatform()
